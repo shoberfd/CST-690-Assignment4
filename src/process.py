@@ -7,8 +7,8 @@ def process_reservation_data(data_frame):
     # The 'errors=coerce' argument handles invalid strings by turning them into NaN.
     data_frame['Ticket_Price'] = pd.to_numeric(data_frame['Ticket_Price'], errors='coerce')
     
-    # Use vectorized .fillna() to replace all None/NaN values in 'Booking_Status'
-    data_frame['Booking_Status'].fillna('Pending', inplace=True)
-    
+    # FIX for the FutureWarning: Reassign the result back to the column
+    # This is the correct, explicit way to fill values without 'inplace=True'
+    data_frame['Booking_Status'] = data_frame['Booking_Status'].fillna('Pending')
     
     return data_frame
