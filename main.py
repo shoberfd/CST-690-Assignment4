@@ -13,11 +13,16 @@ def run_automation_workflow(file_path):
     # Step 1: Load the raw data from the specified path
     reservations_df = load_reservation_data(file_path)
     
-    # Step 2: Validate the data
-    reservations_df = validate_data(reservations_df)
+    # NEW: Handle the case where the file fails to load
+    if reservations_df is None:
+        logging.error("Exiting due to data loading failure.")
+        return
     
-    # Step 3: Process the data
+    # Step 2: Process the data first to clean and normalize it
     reservations_df = process_reservation_data(reservations_df)
+    
+    # Step 3: Validate the now-clean data
+    reservations_df = validate_data(reservations_df)
     
     logging.info(f"Workflow finished. Successfully processed {len(reservations_df)} records.")
 
