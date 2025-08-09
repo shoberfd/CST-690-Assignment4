@@ -1,6 +1,8 @@
 ### Data Assumptions
 
-The test data was generated using `data/generate_sample_data.py`. The script creates 200 initial flight reservations and intentionally introduces several anomalies to simulate real-world data issues.
+The test data was generated using `data/generate_sample_data.py`. The script creates 200 initial flight reservations and intentionally introduces several anomalies to simulate real-world data issues. 
+
+*NOTE* I could not find the "existing automation codebase" described in the assignment instructions, so I created one with flaws to be fixed with Copilot's help. 
 
 * **Missing values:** Random `NaN` values were inserted into the `Ticket_Price` and `Booking_Status` columns.
 * **Duplicate records:** Three duplicate records were added to test the deduplication logic.
